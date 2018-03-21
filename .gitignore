@@ -1,5 +1,6 @@
 # Folders
 /vendor/
+/asset/
 /node_modules/
 /filestorage/*
 
@@ -8,11 +9,14 @@
 thumbs.db
 !/filestorage/README.md
 
+# npm stuff
+package-lock.json
+
 # Blue Jay Files
 env.json
 *.exe
 *.exe~
-blueprint
+pile2
 
 # JetBrains IDE metadata
 .idea
