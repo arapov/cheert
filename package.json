@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "init": "jay env make; gulp init"
+    "init": "jay env make; gulp init",
+    "watch": "gulp watch"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
