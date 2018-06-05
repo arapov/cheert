@@ -14,7 +14,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-ext-replace": "^0.3.0",
     "gulp-livereload": "^3.8.1",
-    "gulp-minify": "2.1.0",
+    "gulp-minify": "3.0.2",
     "gulp-real-favicon": "^0.3.0",
     "gulp-sass": "^4.0.1",
     "gulp-sync": "^0.1.4",
@@ -24,7 +24,7 @@
     "path": "^0.12.7",
     "popper": "^1.0.1",
     "run-sequence": "^2.2.1",
-    "underscore": "^1.9.0",
+    "underscore": "^1.9.1",
     "vue": "^2.5.16"
   }
 }
