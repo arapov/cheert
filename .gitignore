@@ -16,7 +16,7 @@ package-lock.json
 env.json
 *.exe
 *.exe~
-pile2
+cheert
 
 # JetBrains IDE metadata
 .idea
