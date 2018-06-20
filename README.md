@@ -1,4 +1,4 @@
-# [Pile2](https://github.com/arapov/cheert)
+# [Cheert](https://github.com/arapov/cheert)
 
 ## Run in OpenShift
 ```
@@ -8,7 +8,7 @@ $ oc new-app $DOCKER_ID_USER/s2i-cheert-centos7~https://github.com/$DOCKER_ID_US
 
 ## Manually trigger build in OpenShift
 ```
-$ oc start-build cheer
+$ oc start-build cheert
 ```
 
 ## How to run it?
@@ -22,4 +22,9 @@ $ npm run watch
 ```
 $ sudo npm install -g npm-check-updates
 $ npm-check-updates -u -a
+```
+
+## How to add configmap to openshift?
+```
+$ oc create -f .openshift/configmap.yaml
 ```

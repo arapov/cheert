@@ -23,3 +23,8 @@ pile2
 
 # Development
 .env.development
+
+# Openshift
+.openshift/secrets.yaml
+.openshift/configmap.yaml
+
