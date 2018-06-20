@@ -8,8 +8,8 @@ import (
 	"github.com/arapov/cheert/middleware/acl"
 	"github.com/arapov/cheert/model/note"
 
-	"github.com/blue-jay/core/pagination"
-	"github.com/blue-jay/core/router"
+	"github.com/arapov/core/pagination"
+	"github.com/arapov/core/router"
 )
 
 var (

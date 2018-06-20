@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/arapov/cheert/lib/flight"
-	"github.com/blue-jay/core/view"
+	"github.com/arapov/core/view"
 )
 
 // Modify sets AuthLevel in the template to auth if the user is authenticated.

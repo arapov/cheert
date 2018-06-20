@@ -14,9 +14,9 @@ import (
 	"github.com/arapov/cheert/viewmodify/flash"
 	"github.com/arapov/cheert/viewmodify/uri"
 
-	"github.com/blue-jay/core/form"
-	"github.com/blue-jay/core/pagination"
-	"github.com/blue-jay/core/xsrf"
+	"github.com/arapov/core/form"
+	"github.com/arapov/core/pagination"
+	"github.com/arapov/core/xsrf"
 )
 
 // RegisterServices sets up all the web components.

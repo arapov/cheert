@@ -9,10 +9,10 @@ import (
 
 	"github.com/arapov/cheert/lib/env"
 
-	"github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/form"
-	"github.com/blue-jay/core/router"
-	"github.com/blue-jay/core/view"
+	"github.com/arapov/core/flash"
+	"github.com/arapov/core/form"
+	"github.com/arapov/core/router"
+	"github.com/arapov/core/view"
 
 	"github.com/gorilla/sessions"
 	"github.com/jmoiron/sqlx"

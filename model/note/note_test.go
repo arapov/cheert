@@ -7,7 +7,7 @@ import (
 
 	"github.com/arapov/cheert/model/note"
 	"github.com/arapov/cheert/model/user"
-	"github.com/blue-jay/core/storage/migration/mysql"
+	"github.com/arapov/core/storage/migration/mysql"
 
 	"github.com/jmoiron/sqlx"
 )

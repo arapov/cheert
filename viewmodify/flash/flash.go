@@ -7,8 +7,8 @@ import (
 
 	"github.com/arapov/cheert/lib/flight"
 
-	flashlib "github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/view"
+	flashlib "github.com/arapov/core/flash"
+	"github.com/arapov/core/view"
 )
 
 // Modify adds the flashes to the view.

@@ -6,7 +6,7 @@ import (
 
 	"github.com/arapov/cheert/lib/flight"
 
-	"github.com/blue-jay/core/router"
+	"github.com/arapov/core/router"
 )
 
 // Load the routes.

@@ -8,11 +8,11 @@ import (
 	"github.com/arapov/cheert/middleware/acl"
 	"github.com/arapov/cheert/model/user"
 
-	"github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/form"
-	"github.com/blue-jay/core/passhash"
-	"github.com/blue-jay/core/router"
-	"github.com/blue-jay/core/session"
+	"github.com/arapov/core/flash"
+	"github.com/arapov/core/form"
+	"github.com/arapov/core/passhash"
+	"github.com/arapov/core/router"
+	"github.com/arapov/core/session"
 )
 
 // Load the routes.

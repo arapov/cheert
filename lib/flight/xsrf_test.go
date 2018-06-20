@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/arapov/cheert/lib/flight"
-	"github.com/blue-jay/core/xsrf"
+	"github.com/arapov/core/xsrf"
 )
 
 // TestRace tests for race conditions.

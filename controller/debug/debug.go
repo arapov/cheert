@@ -7,7 +7,7 @@ import (
 
 	"github.com/arapov/cheert/middleware/acl"
 
-	"github.com/blue-jay/core/router"
+	"github.com/arapov/core/router"
 
 	"github.com/husobee/vestigo"
 )

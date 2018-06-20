@@ -10,9 +10,9 @@ import (
 	"github.com/arapov/cheert/lib/flight"
 	flashmod "github.com/arapov/cheert/viewmodify/flash"
 
-	"github.com/blue-jay/core/flash"
-	"github.com/blue-jay/core/session"
-	"github.com/blue-jay/core/view"
+	"github.com/arapov/core/flash"
+	"github.com/arapov/core/session"
+	"github.com/arapov/core/view"
 
 	"github.com/gorilla/sessions"
 )
