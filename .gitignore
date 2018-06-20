@@ -20,3 +20,6 @@ pile2
 
 # JetBrains IDE metadata
 .idea
+
+# Development
+.env.development
