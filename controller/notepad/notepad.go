@@ -4,9 +4,9 @@ package notepad
 import (
 	"net/http"
 
-	"github.com/arapov/pile2/lib/flight"
-	"github.com/arapov/pile2/middleware/acl"
-	"github.com/arapov/pile2/model/note"
+	"github.com/arapov/cheert/lib/flight"
+	"github.com/arapov/cheert/middleware/acl"
+	"github.com/arapov/cheert/model/note"
 
 	"github.com/blue-jay/core/pagination"
 	"github.com/blue-jay/core/router"

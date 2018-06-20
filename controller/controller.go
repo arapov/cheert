@@ -2,14 +2,14 @@
 package controller
 
 import (
-	"github.com/arapov/pile2/controller/about"
-	"github.com/arapov/pile2/controller/debug"
-	"github.com/arapov/pile2/controller/home"
-	"github.com/arapov/pile2/controller/login"
-	"github.com/arapov/pile2/controller/notepad"
-	"github.com/arapov/pile2/controller/register"
-	"github.com/arapov/pile2/controller/static"
-	"github.com/arapov/pile2/controller/status"
+	"github.com/arapov/cheert/controller/about"
+	"github.com/arapov/cheert/controller/debug"
+	"github.com/arapov/cheert/controller/home"
+	"github.com/arapov/cheert/controller/login"
+	"github.com/arapov/cheert/controller/notepad"
+	"github.com/arapov/cheert/controller/register"
+	"github.com/arapov/cheert/controller/static"
+	"github.com/arapov/cheert/controller/status"
 )
 
 // LoadRoutes loads the routes for each of the controllers.

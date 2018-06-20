@@ -5,9 +5,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/arapov/pile2/lib/flight"
-	"github.com/arapov/pile2/middleware/acl"
-	"github.com/arapov/pile2/model/user"
+	"github.com/arapov/cheert/lib/flight"
+	"github.com/arapov/cheert/middleware/acl"
+	"github.com/arapov/cheert/model/user"
 
 	"github.com/blue-jay/core/form"
 	"github.com/blue-jay/core/passhash"

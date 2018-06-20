@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/arapov/pile2/controller/status"
-	"github.com/arapov/pile2/lib/flight"
+	"github.com/arapov/cheert/controller/status"
+	"github.com/arapov/cheert/lib/flight"
 	"github.com/gorilla/csrf"
 )
 

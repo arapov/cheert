@@ -4,7 +4,7 @@ package about
 import (
 	"net/http"
 
-	"github.com/arapov/pile2/lib/flight"
+	"github.com/arapov/cheert/lib/flight"
 
 	"github.com/blue-jay/core/router"
 )

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/arapov/pile2/lib/env"
+	"github.com/arapov/cheert/lib/env"
 )
 
 // TestPath ensures path is set properly.

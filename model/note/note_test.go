@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/arapov/pile2/model/note"
-	"github.com/arapov/pile2/model/user"
+	"github.com/arapov/cheert/model/note"
+	"github.com/arapov/cheert/model/user"
 	"github.com/blue-jay/core/storage/migration/mysql"
 
 	"github.com/jmoiron/sqlx"

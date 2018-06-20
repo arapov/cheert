@@ -6,9 +6,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/arapov/pile2/lib/env"
-	"github.com/arapov/pile2/lib/flight"
-	flashmod "github.com/arapov/pile2/viewmodify/flash"
+	"github.com/arapov/cheert/lib/env"
+	"github.com/arapov/cheert/lib/flight"
+	flashmod "github.com/arapov/cheert/viewmodify/flash"
 
 	"github.com/blue-jay/core/flash"
 	"github.com/blue-jay/core/session"

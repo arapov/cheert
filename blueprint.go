@@ -5,8 +5,8 @@ import (
 	"log"
 	"runtime"
 
-	"github.com/arapov/pile2/lib/boot"
-	"github.com/arapov/pile2/lib/env"
+	"github.com/arapov/cheert/lib/boot"
+	"github.com/arapov/cheert/lib/env"
 
 	"github.com/blue-jay/core/router"
 	"github.com/blue-jay/core/server"

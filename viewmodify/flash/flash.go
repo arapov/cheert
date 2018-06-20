@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/arapov/pile2/lib/flight"
+	"github.com/arapov/cheert/lib/flight"
 
 	flashlib "github.com/blue-jay/core/flash"
 	"github.com/blue-jay/core/view"
