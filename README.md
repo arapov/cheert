@@ -28,3 +28,8 @@ $ npm-check-updates -u -a
 ```
 $ oc create -f .openshift/configmap.yaml
 ```
+
+## How to update s2i builder image in openshift?
+```
+$ oc tag --scheduled --source=docker $DOCKER_ID_USER/s2i-cheert-centos7:latest s2i-cheert-centos7:latest
+```
