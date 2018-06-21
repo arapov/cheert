@@ -5,6 +5,7 @@ import (
 	"github.com/arapov/cheert/controller/about"
 	"github.com/arapov/cheert/controller/home"
 	"github.com/arapov/cheert/controller/static"
+	"github.com/arapov/cheert/controller/up"
 )
 
 // LoadRoutes loads the routes for each of the controllers.
@@ -17,4 +18,5 @@ func LoadRoutes() {
 	static.Load()
 	//	status.Load()
 	//	notepad.Load()
+	up.Load()
 }

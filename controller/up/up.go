@@ -1,5 +1,5 @@
-// Package home displays the Home page.
-package home
+// Package up
+package up
 
 import (
 	"net/http"
@@ -11,12 +11,17 @@ import (
 
 // Load the routes.
 func Load() {
-	router.Get("/", Index)
+	router.Post("/up", Index)
 }
 
 // Index displays the home page.
 func Index(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
-	v := c.View.New("home/index")
+
+	v := c.View.New("up/index")
+	if c.Sess.Values["id"] != nil {
+		v.Vars["first_name"] = c.Sess.Values["first_name"]
+	}
+
 	v.Render(w, r)
 }
