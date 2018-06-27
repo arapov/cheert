@@ -1,26 +1,81 @@
 {{define "title"}}Cheer{{end}}
-{{define "head"}}{{end}}
+{{define "head"}}
+    {{JS "/static/js/jquery.min.js"}}
+    {{JS "/static/js/jquery.typeahead.min.js"}}
+    {{CSS "/static/css/jquery.typeahead.min.css" "all"}}
+{{end}}
 {{define "content"}}
                 <div class="row justify-content-center" style="margin: 5em auto 5em;">
                     <div class="col-12">
                         <form action="/up" method="post">
                             <div class="form-row justify-content-center">
-                                <div class="col-5">
-                                    <div class="input-group mb-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">I am</div>
+                                <div class="col-8">
+                                    <div class="typeahead__container">
+                                        <div class="typeahead__field">
+                                            <span class="typeahead__query">
+                                                <input class="form-control typeahead" id="name" name="identity" autocomplete="off" placeholder="Enter your name, account or ircnick" disabled>
+                                            </span>
+                                            <span class="typeahead__button">
+                                                <button type="submit">
+                                                    <span class="typeahead__search-icon"></span>
+                                                </button>
+                                            </span>
                                         </div>
-                                        <input type="text" class="form-control" name="identity" placeholder="your name / ircnick / kerberos account">
                                     </div>
-                                </div>
-                                <div class="col-1">
-                                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
                                 </div>
                             </div>
                             <input type="hidden" name="_token" value="{{$.token}}">
+                            <input type="hidden" id="uid" name="uid" value="">
+                            <input type="hidden" id="group" name="group" value="">
                         </form>
                     </div>
                 </div>
+<script>
+$.typeahead({
+    input: ".typeahead",
+    mustSelectItem: true,
+    generateOnLoad: true,
+    minLength: 1,
+    backdrop: {
+        "background-color": "#3879d9",
+        "opacity": "0.1",
+        "filter": "alpha(opacity=10)"
+    },
+    display: ["uid", "cn", "rhatNickName"],
+    emptyTemplate: function (query) {
+        if (query.length > 0) {
+            return 'No results found for "' + query + '"';
+        }
+    },
+    template: function (query, item) {
+        onIrc = '';
+        if (item.rhatNickName != null && item.rhatNickName[0] !== item.uid[0]) {
+            onIrc = '<span class="rhatNickName"> <small>also known as <strong>{{`{{rhatNickName}}`}}</strong> on irc</small></span>';
+        };
+        return  '<span>' +
+                    '<span class="cn">{{`{{cn}}`}}</span>' +
+                    '<span class="uid"> <small>({{`{{uid}}`}}@redhat.com)</small></span>' +
+                    onIrc +
+                '</span>'
+    },
+    source: {
+        people: {
+            url: "http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatPerson&rhatCostCenter=716,667,653,586"
+        }
+    },
+    callback: {
+        onPopulateSource: function (node, data, group, path) {
+            node[0].disabled = false;
+            return data;
+        },
+        onClick: function (node, a, item, event) {
+           $('#uid').val(item.uid);
+           $('#group').val(item.memberOf);
+           $('#name').val(item.cn);
+        }
+    }
+});
+</script>
 {{template "footer" .}}
 {{- end}}
 {{define "foot"}}{{end}}

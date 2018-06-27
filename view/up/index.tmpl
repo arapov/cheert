@@ -2,7 +2,9 @@
 {{define "head"}}{{end}}
 {{define "content"}}
 
-    <p>{{.id}}</p>
+    <p>{{.identity}}</p>
+    <p>uid is {{.uid}}</p>
+    <p>group is {{.group}}</p>
 
 {{template "footer" .}}
 {{- end}}

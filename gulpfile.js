@@ -81,6 +81,14 @@ gulp.task('vuejs', function() {
 		.pipe(gulp.dest(folderAsset + '/static/js/'));
 });
 
+// jquery-typeahead.js
+gulp.task('typeahead', function() {
+	gulp.src('node_modules/jquery-typeahead/dist/jquery.typeahead.min.css')
+		.pipe(gulp.dest(folderAsset + '/static/css/'));
+	return gulp.src('node_modules/jquery-typeahead/dist/jquery.typeahead.min.js')
+		.pipe(gulp.dest(folderAsset + '/static/js/'));
+});
+
 // Underscore Task
 gulp.task('underscore', function() {
 	return gulp.src('node_modules/underscore/underscore-min.*')
@@ -254,7 +262,7 @@ gulp.task('watch', ['server:build'], function() {
 });
 
 // Init - every task
-gulp.task('init', ['sass', 'javascript', 'jquery', 'bootstrap', 'vuejs', 'underscore', 'favicon', 'server:build']);
+gulp.task('init', ['sass', 'javascript', 'jquery', 'bootstrap', 'vuejs', 'typeahead', 'underscore', 'favicon', 'server:build']);
 
 // Default - only run the tasks that change often
 gulp.task('default', ['sass', 'javascript', 'server:build']);

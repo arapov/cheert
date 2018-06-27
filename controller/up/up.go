@@ -19,9 +19,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 
 	v := c.View.New("up/index")
-	if c.Sess.Values["id"] != nil {
-		v.Vars["first_name"] = c.Sess.Values["first_name"]
-	}
+	v.Vars["identity"] = r.FormValue("identity")
+	v.Vars["uid"] = r.FormValue("uid")
+	v.Vars["group"] = r.FormValue("group")
 
 	v.Render(w, r)
 }
