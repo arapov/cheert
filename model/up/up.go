@@ -27,12 +27,7 @@ type Conection interface {
 }
 
 func Create(db Conection, From string, To string, Plus string, Note string) (sql.Result, error) {
-	result, err := db.Exec(fmt.Sprintf(`
-		INSERT INTO %v
-		(from, to, plus, note)
-		VALUES
-		(?,?,?,?)
-		`, table),
+	result, err := db.Exec(fmt.Sprintf("INSERT INTO %v (`from`, `to`, `plus`, `note`) VALUES (?,?,?,?)", table),
 		From, To, Plus, Note)
 	return result, err
 }
