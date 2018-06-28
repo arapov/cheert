@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/arapov/cheert/lib/flight"
+	"github.com/arapov/cheert/model/up"
 
 	"github.com/arapov/core/router"
 )
@@ -53,17 +54,25 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func Submit(w http.ResponseWriter, r *http.Request) {
-	//c := flight.Context(w, r)
+	c := flight.Context(w, r)
 
 	r.ParseForm()
-	//for k, v := range r.Form {
-	//	log.Println(k, ">", v)
-	//}
+	for k, v := range r.Form {
+		log.Println(k, ">", v)
+	}
 
 	for i, value := range r.Form["uid"] {
-		log.Println(value, " praise ", r.Form["praise"][i])
-		log.Println(value, " plus ", r.Form["plus["+value+"]"])
+		//log.Println(value, " praise ", r.Form["praise"][i])
+		//log.Println(value, " plus ", r.Form["plus["+value+"]"])
+
+		_, err := up.Create(c.DB, value, r.Form["from"][0], r.Form["plus["+value+"]"][0], r.Form["praise"][i])
+		if err != nil {
+			c.FlashErrorGeneric(err)
+			return
+		}
+
 	}
+
 }
 
 func End(w http.ResponseWriter, r *http.Request) {
