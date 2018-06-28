@@ -17,6 +17,7 @@ import (
 func Load() {
 	router.Post("/up", Index)
 	router.Post("/up/submit", Submit)
+	router.Get("/up/submit", End)
 }
 
 // Index displays the home page.
@@ -52,11 +53,23 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func Submit(w http.ResponseWriter, r *http.Request) {
-	c := flight.Context(w, r)
-	v := c.View.New("up/submit")
+	//c := flight.Context(w, r)
 
 	r.ParseForm()
-	log.Println(r.Form)
+	//for k, v := range r.Form {
+	//	log.Println(k, ">", v)
+	//}
+
+	for i, value := range r.Form["uid"] {
+		log.Println(value, " praise ", r.Form["praise"][i])
+		log.Println(value, " plus ", r.Form["plus["+value+"]"])
+
+	}
+}
+
+func End(w http.ResponseWriter, r *http.Request) {
+	c := flight.Context(w, r)
+	v := c.View.New("up/submit")
 
 	v.Render(w, r)
 }

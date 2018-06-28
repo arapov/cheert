@@ -15,16 +15,17 @@
 </p>
 
 <div id="app">
-    <form action="/up/submit" method="post">
+    <form action="/up/submit" @submit.prevent="getFormValues" id="cheer">
 
         <div v-for="groupid in dfgs">
             <dfg :groupid="groupid"></dfg>
         </div>
-        
+
         <div class="container-fluid mt-2">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        
+
+        <input type="hidden" name="from" value="{{.uid}}">
         <input type="hidden" name="_token" value="{{$.token}}">
     </form>
 </div>
@@ -39,26 +40,26 @@
                     <div v-if="!loading" v-for="(member, i) in members" v-if="member.uid != '{{.uid}}'">
                         <div class="form-row mt-1">
                             <div class="col-2">
-                                <input type="text" class="form-control" :value="member.uid[0]" disabled>
+                                <input type="text" name="uid" class="form-control" :value="member.uid[0]" readonly>
                             </div>
                             <div class="col-3">
-                                <input type="text" class="form-control" :value="member.cn[0]" disabled>
+                                <input type="text" class="form-control" :value="member.cn[0]" readonly>
                             </div>
                             <div class="col-2">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-success">
-                                        <input type="radio" name="options" id="option1" autocomplete="off">+1
+                                        <input type="radio" :name="'plus['+member.uid[0]+']'" value="1" autocomplete="off">+1
                                     </label>
                                     <label class="btn btn-success">
-                                        <input type="radio" name="options" id="option2" autocomplete="off">+2
+                                        <input type="radio" :name="'plus['+member.uid[0]+']'" value="2" autocomplete="off">+2
                                     </label>
                                     <label class="btn btn-success">
-                                        <input type="radio" name="options" id="option3" autocomplete="off">+3
+                                        <input type="radio" :name="'plus['+member.uid[0]+']'" value="3" autocomplete="off">+3
                                     </label>
                                 </div>
                             </div> 
                             <div class="col">
-                                <input type="text" class="form-control" :placeholder="'Enter your praise to ' + member.cn[0] + '...'">
+                                <input type="text" name="praise" class="form-control" :placeholder="'Enter your praise to ' + member.cn[0] + '...'">
                             </div>
                         </div>
                     </div>
@@ -104,7 +105,22 @@
                 this.dfgs = await this.groups.split(",");
             }
         },
+        methods: {
+            async getFormValues (event) {
+                let formData = new FormData(event.target);
+                await this.$http.post('/up/submit', formData);
+                window.location.href = "/up/submit";
+            }
+        }
     });
+
+$('#cheer').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+});
 </script>
 {{template "footer" .}}
 {{- end}}
