@@ -81,6 +81,12 @@ gulp.task('vuejs', function() {
 		.pipe(gulp.dest(folderAsset + '/static/js/'));
 });
 
+// vue-resource.js
+gulp.task('vue-resource', function() {
+	return gulp.src('node_modules/vue-resource/dist/vue-resource.min.js')
+		.pipe(gulp.dest(folderAsset + '/static/js/'));
+});
+
 // jquery-typeahead.js
 gulp.task('typeahead', function() {
 	gulp.src('node_modules/jquery-typeahead/dist/jquery.typeahead.min.css')
@@ -262,7 +268,7 @@ gulp.task('watch', ['server:build'], function() {
 });
 
 // Init - every task
-gulp.task('init', ['sass', 'javascript', 'jquery', 'bootstrap', 'vuejs', 'typeahead', 'underscore', 'favicon', 'server:build']);
+gulp.task('init', ['sass', 'javascript', 'jquery', 'bootstrap', 'vuejs', 'vue-resource', 'typeahead', 'underscore', 'favicon', 'server:build']);
 
 // Default - only run the tasks that change often
 gulp.task('default', ['sass', 'javascript', 'server:build']);

@@ -1,11 +1,111 @@
 {{define "title"}}Cheer{{end}}
-{{define "head"}}{{end}}
+{{define "head"}}
+	{{JS "/static/js/vue.min.js"}}
+    {{JS "/static/js/jquery.min.js"}}
+    {{JS "/static/js/vue-resource.min.js"}}
+    {{JS "/static/js/jquery.typeahead.min.js"}}
+    {{CSS "/static/css/jquery.typeahead.min.css" "all"}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+{{end}}
 {{define "content"}}
 
-    <p>{{.identity}}</p>
-    <p>uid is {{.uid}}</p>
-    <p>group is {{.group}}</p>
+<div class="page-header">Hello, {{.identity}}!</div>
+<p>
+    Below are the DFGs you are the member of
+</p>
 
+<div id="app">
+    <form action="/up/submit" method="post">
+
+        <div v-for="groupid in dfgs">
+            <dfg :groupid="groupid"></dfg>
+        </div>
+        
+        <div class="container-fluid mt-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
+        <input type="hidden" name="_token" value="{{$.token}}">
+    </form>
+</div>
+
+<template id="dfg">
+    <div class="container-fluid">
+        <div class="row w-100">
+            <div class="card w-100 mt-2">
+                <div class="card-header">${group.description[0]}</div>
+                <div class="card-body">
+                    <div v-if="loading"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
+                    <div v-if="!loading" v-for="(member, i) in members" v-if="member.uid != '{{.uid}}'">
+                        <div class="form-row mt-1">
+                            <div class="col-2">
+                                <input type="text" class="form-control" :value="member.uid[0]" disabled>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" :value="member.cn[0]" disabled>
+                            </div>
+                            <div class="col-2">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-success">
+                                        <input type="radio" name="options" id="option1" autocomplete="off">+1
+                                    </label>
+                                    <label class="btn btn-success">
+                                        <input type="radio" name="options" id="option2" autocomplete="off">+2
+                                    </label>
+                                    <label class="btn btn-success">
+                                        <input type="radio" name="options" id="option3" autocomplete="off">+3
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col">
+                                <input type="text" class="form-control" :placeholder="'Enter your praise to ' + member.cn[0] + '...'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    Vue.component('dfg', {
+        template: "#dfg",
+        delimiters: ['${','}'],
+        props: ['groupid'],
+        data() {
+            return {
+                group: {
+                    description: [],
+                },
+                members: [{
+                    uid: [],
+                    cn: [],
+                }],
+                loading: true,
+            }
+        },
+        async mounted() {
+            this.group = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatRoverGroup&cn='+this.groupid)).body[0];
+            this.members = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatPerson&memberOf=*'+this.groupid+'*')).body;
+            this.loading = false;
+        }
+    });
+
+    let app = new Vue({
+        el: '#app',
+        delimiters: ['${','}'],
+        data: {
+            groups: '{{.group}}',
+            dfgs: {},
+        },
+        async mounted() {
+            if (this.groups != '') {
+                this.dfgs = await this.groups.split(",");
+            }
+        },
+    });
+</script>
 {{template "footer" .}}
 {{- end}}
 {{define "foot"}}{{end}}
