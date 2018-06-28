@@ -3,7 +3,6 @@ package up
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"regexp"
 	"strings"
@@ -33,15 +32,20 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	if len(dfgs) > 0 {
 
 		var dfgComma string
+		check := make(map[string]int)
 		for _, dfg := range dfgs {
-			log.Println(dfg)
 			squad := strings.Index(dfg[0], "-squad")
 			if squad != -1 {
-				dfgComma += fmt.Sprintf("%s,", dfg[0][0:squad])
+				if _, ok := check[dfg[0][0:squad]]; !ok {
+					check[dfg[0][0:squad]] = 1
+					dfgComma += fmt.Sprintf("%s,", dfg[0][0:squad])
+				}
 			} else {
-				dfgComma += fmt.Sprintf("%s,", dfg[0])
+				if _, ok := check[dfg[0]]; !ok {
+					check[dfg[0]] = 1
+					dfgComma += fmt.Sprintf("%s,", dfg[0])
+				}
 			}
-
 		}
 		dfgComma = dfgComma[0 : len(dfgComma)-1]
 		v.Vars["group"] = dfgComma
