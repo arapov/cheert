@@ -10,9 +10,6 @@
 {{define "content"}}
 
 <div class="page-header">Hello, {{.identity}}!</div>
-<p>
-    Below are the DFGs you are the member of
-</p>
 
 <div id="app">
     <form action="/up/submit" @submit.prevent="getFormValues" id="cheer">
