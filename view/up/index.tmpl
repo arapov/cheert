@@ -37,10 +37,10 @@
                     <div v-else v-for="(member, i) in members">
                         <div v-if="member.uid[0] != '{{.uid}}'" class="form-row mt-1">
                             <div class="col-2">
-                                <input type="text" name="uid" class="form-control" :value="member.uid[0]" readonly>
+                                <input type="text" name="uid" class="form-control" :value="member.uid[0]" onfocus="this.blur();" readonly>
                             </div>
                             <div class="col-3">
-                                <input type="text" class="form-control" :value="member.cn[0]" readonly>
+                                <input type="text" class="form-control" :value="member.cn[0]" onfocus="this.blur();" readonly>
                             </div>
                             <div class="col-2 text-center">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
