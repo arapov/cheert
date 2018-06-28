@@ -34,8 +34,8 @@
                 <div class="card-header">${group.description[0]}</div>
                 <div class="card-body">
                     <div v-if="loading"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
-                    <div v-if="!loading" v-for="(member, i) in members" v-if="member.uid[0] != '{{.uid}}'">
-                        <div class="form-row mt-1">
+                    <div v-else v-for="(member, i) in members">
+                        <div v-if="member.uid[0] != '{{.uid}}'" class="form-row mt-1">
                             <div class="col-2">
                                 <input type="text" name="uid" class="form-control" :value="member.uid[0]" readonly>
                             </div>
