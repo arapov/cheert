@@ -51,7 +51,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		v.Vars["group"] = dfgComma
 	}
 
-	v.Vars["identity"] = r.FormValue("identity")
+	v.Vars["id"] = r.FormValue("id")
 	v.Vars["uid"] = r.FormValue("uid")
 
 	v.Render(w, r)

@@ -26,6 +26,7 @@
                                 </div>
                             </div>
                             <input type="hidden" name="_token" value="{{$.token}}">
+                            <input type="hidden" id="id" name="id" value="">
                             <input type="hidden" id="uid" name="uid" value="">
                             <input type="hidden" id="group" name="group" value="">
                         </form>
@@ -74,9 +75,10 @@ $.typeahead({
             return data;
         },
         onClick: function (node, a, item, event) {
-           $('#uid').val(item.uid);
-           $('#group').val(item.memberOf);
-           $('#name').val(item.cn);
+            $('#id').val(item.cn);
+            $('#uid').val(item.uid);
+            $('#group').val(item.memberOf);
+            $('#name').val(item.cn);
         }
     }
 });

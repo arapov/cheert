@@ -9,7 +9,7 @@
 {{end}}
 {{define "content"}}
 
-<div class="page-header">Hello, {{.identity}}!</div>
+<div class="page-header">Hello, {{.id}}!</div>
 
 <div id="app">
     <form action="/up/submit" @submit.prevent="getFormValues" id="cheer">
