@@ -84,8 +84,8 @@
             }
         },
         async mounted() {
-            this.group = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatRoverGroup&cn='+this.groupid)).body[0];
-            this.members = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatPerson&memberOf=*'+this.groupid+'*')).body;
+            this.group = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatRoverGroup&cn='+this.groupid+'&attributes=cn,description')).body[0];
+            this.members = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatPerson&memberOf=*'+this.groupid+'*&attributes=uid,cn')).body;
             this.loading = false;
         }
     });
