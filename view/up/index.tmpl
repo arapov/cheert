@@ -19,7 +19,14 @@
         </div>
 
         <div class="container-fluid mt-2">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="row justify-content-between">
+                <div class="col-1">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
         </div>
 
         <input type="hidden" name="from" value="{{.uid}}">
@@ -29,7 +36,7 @@
 
 <template id="dfg">
     <div class="container-fluid">
-        <div class="row w-100">
+        <div class="row">
             <div class="card w-100 mt-2">
                 <div class="card-header">${group.description[0]}</div>
                 <div class="card-body">
