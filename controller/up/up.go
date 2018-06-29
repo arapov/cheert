@@ -61,7 +61,11 @@ func Submit(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 
 	r.ParseForm()
-
+	/*
+		for k, v := range r.Form {
+			log.Println(k, " > ", v)
+		}
+	*/
 	for i, value := range r.Form["uid"] {
 		//log.Println(value, " praise ", r.Form["praise"][i])
 		//log.Println(value, " plus ", r.Form["plus["+value+"]"])
