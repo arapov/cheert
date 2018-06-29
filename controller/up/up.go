@@ -74,12 +74,10 @@ func Submit(w http.ResponseWriter, r *http.Request) {
 		_, err := up.Create(c.DB, r.Form["from"][0], value, plus, r.Form["praise"][i])
 		if err != nil {
 			c.FlashErrorGeneric(err)
-
 			return
 		}
 
 	}
-
 }
 
 func End(w http.ResponseWriter, r *http.Request) {
