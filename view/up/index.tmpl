@@ -19,8 +19,7 @@
         </div>
 
         <div class="container-fluid mt-2">
-            <my-item v-for="(row, index) in rows" :row="row" v-on:remove="removeRow(index)">
-            </my-item>
+            <my-item v-for="(row, index) in rows" :row="row" v-on:remove="removeRow(index)"></my-item>
         </div>
 
         <div class="container-fluid mt-2">
@@ -117,12 +116,8 @@
 
 <script>
     Vue.component('my-item', {
-        props: ['itemdata', 'row'],
+        props: ['row'],
         template: '#item-template',
-        data: function () {
-            return {
-            }
-        },
         mounted: function() {
             $.typeahead({
                 input: "#typeahead",
@@ -200,13 +195,13 @@
         }
     });
 
-    let app = new Vue({
+    new Vue({
         el: '#app',
         delimiters: ['${','}'],
         data: {
+            rows: [],
             groups: '{{.group}}',
             dfgs: {},
-            rows: [],
         },
         async mounted() {
             if (this.groups != '') {
@@ -227,7 +222,7 @@
                 $('#plus1').removeAttr('id');
                 $('#plus2').removeAttr('id');
                 $('#plus3').removeAttr('id');
-                this.rows.push({row: ''}); 
+                this.rows.push({row: ''});
             },
             removeRow(index) {
                 this.rows.splice(index, 1);
