@@ -8,8 +8,8 @@ import (
 	"github.com/arapov/cheert/lib/boot"
 	"github.com/arapov/cheert/lib/env"
 
-	"github.com/arapov/core/router"
-	"github.com/arapov/core/server"
+	"github.com/blue-jay-fork/core/router"
+	"github.com/blue-jay-fork/core/server"
 )
 
 // init sets runtime settings.

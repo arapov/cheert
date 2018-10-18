@@ -6,7 +6,7 @@ import (
 
 	"github.com/arapov/cheert/middleware/logrequest"
 	"github.com/arapov/cheert/middleware/rest"
-	"github.com/arapov/core/router"
+	"github.com/blue-jay-fork/core/router"
 	"github.com/gorilla/context"
 )
 

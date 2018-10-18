@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"path"
 
-	"github.com/arapov/core/view"
+	"github.com/blue-jay-fork/core/view"
 )
 
 // Modify sets BaseURI, CurrentURI, ParentURI, and the GrandparentURI

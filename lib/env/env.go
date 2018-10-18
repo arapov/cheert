@@ -6,15 +6,15 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/arapov/core/asset"
-	"github.com/arapov/core/email"
-	"github.com/arapov/core/form"
-	"github.com/arapov/core/generate"
-	"github.com/arapov/core/jsonconfig"
-	"github.com/arapov/core/server"
-	"github.com/arapov/core/session"
-	"github.com/arapov/core/storage/driver/mysql"
-	"github.com/arapov/core/view"
+	"github.com/blue-jay-fork/core/asset"
+	"github.com/blue-jay-fork/core/email"
+	"github.com/blue-jay-fork/core/form"
+	"github.com/blue-jay-fork/core/generate"
+	"github.com/blue-jay-fork/core/jsonconfig"
+	"github.com/blue-jay-fork/core/server"
+	"github.com/blue-jay-fork/core/session"
+	"github.com/blue-jay-fork/core/storage/driver/mysql"
+	"github.com/blue-jay-fork/core/view"
 )
 
 // *****************************************************************************
