@@ -43,7 +43,7 @@ $.typeahead({
         "opacity": "0.1",
         "filter": "alpha(opacity=10)"
     },
-    display: ["uid", "cn", "rhatNickName"],
+    display: ["data.uid", "data.cn", "data.rhatNickName"],
     emptyTemplate: function (query) {
         if (query.length > 0) {
             return 'No results found for "' + query + '"';
