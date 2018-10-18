@@ -28,7 +28,10 @@ func RegisterServices(config *env.Info) {
 	}
 
 	// Connect to the MySQL database
-	mysqlDB, _ := config.MySQL.Connect(true)
+	mysqlDB, err := config.MySQL.Connect(true)
+	if err != nil {
+		log.Println(err)
+	}
 
 	// Load the controller routes
 	controller.LoadRoutes()
