@@ -79,9 +79,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="card w-100 mt-2">
-                <div class="card-header">${group.description[0]}</div>
+                <div class="card-header">${group.cn[0]}</div>
                 <div class="card-body">
                     <div v-if="loading"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
+                    <div v-else-if="members.length < 2"> No other members in this group. </div>
                     <div v-else v-for="(member, i) in members">
                         <div v-if="member.uid[0] != '{{.uid}}'" class="form-row mt-1">
                             <div class="col-2">
@@ -153,7 +154,7 @@
                                     "&attributes=uid,cn,rhatCostCenter,rhatNickName,memberOf",
                                 path: "data"
                         }
-                    },
+                    }
                 },
                 callback: {
                     onPopulateSource: function (node, data, group, path) {
@@ -186,6 +187,7 @@
         data() {
             return {
                 group: {
+                    cn: [],
                     description: [],
                 },
                 members: [{
@@ -196,8 +198,8 @@
             }
         },
         async mounted() {
-            this.group = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatRoverGroup&cn='+this.groupid+'&attributes=cn,description')).body[0];
-            this.members = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatPerson&memberOf=*'+this.groupid+'*&attributes=uid,cn')).body;
+            this.group = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatRoverGroup&cn='+this.groupid+'&attributes=cn,description')).body.data[0];
+            this.members = (await this.$http.get('http://rhos-test.op.redhat.com/api/v1/query?objectClass=rhatPerson&memberOf=*'+this.groupid+'*&attributes=uid,cn')).body.data;
             this.loading = false;
         }
     });
@@ -209,6 +211,7 @@
             rows: [],
             groups: '{{.group}}',
             dfgs: {},
+            render: true,
         },
         async mounted() {
             if (this.groups != '') {
