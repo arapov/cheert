@@ -1,7 +1,6 @@
 {{define "title"}}Cheer{{end}}
 {{define "head"}}
 	{{JS "/static/js/vue.min.js"}}
-    {{JS "/static/js/jquery.min.js"}}
     {{JS "/static/js/vue-resource.min.js"}}
     {{JS "/static/js/jquery.typeahead.min.js"}}
     {{CSS "/static/css/jquery.typeahead.min.css" "all"}}
@@ -247,6 +246,7 @@ $('#cheer').on('keyup keypress', function(e) {
         return false;
     };
 });
+
 </script>
 {{template "footer" .}}
 {{- end}}
