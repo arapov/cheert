@@ -145,11 +145,7 @@
                     people: {
                         ajax: {
                                 url: "http://rhos-test.op.redhat.com/api/v1/query" +
-                                    "?objectClass=rhatPerson" +
-                                    "&|rhatCostCenter=700" +
-                                    "&|memberOf=*ds-core*,*cs-core*,*sssd*,*freeipa*,*crypto*,*audit-subsystem*," +
-                                    "*selinux-solutions*,*security-*,*common-logging-and-session-recording*," +
-                                    "*openstack-identity-and-security-engineering*,*special-projects*,*samba*" +
+                                    "?objectClass=rhatPerson&rhatCostCenter=700" +
                                     "&attributes=uid,cn,rhatCostCenter,rhatNickName,memberOf",
                                 path: "data"
                         }
