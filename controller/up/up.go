@@ -2,7 +2,9 @@
 package up
 
 import (
+	"fmt"
 	"net/http"
+	"regexp"
 	"strings"
 
 	"github.com/arapov/cheert/lib/flight"
@@ -13,43 +15,42 @@ import (
 
 // Load the routes.
 func Load() {
-	router.Post("/up", Index2)
+	router.Post("/up", Index)
 	router.Post("/up/submit", Submit)
 	router.Get("/up/submit", End)
 }
 
 // Index displays the home page.
-func Index2(w http.ResponseWriter, r *http.Request) {
+func Index(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 	v := c.View.New("up/index")
 
-	dfgs := []string{
-		"ds-core",
-		"cs-core",
-		"sssd",
-		"freeipa",
-		"freeipa-ds",
-		"freeipa-cs-in-ipa",
-		"crypto",
-		"audit-subsystem",
-		"selinux-solutions",
-		"security-compliance",
-		"security-technologies",
-		"common-logging-and-session-recording",
-		"openstack-identity-and-security-engineering",
-		"special-projects",
-		"special-projects-and-integration",
-		"samba",
-	}
+	re, _ := regexp.Compile(`rhos-dfg-[a-z-]*`)
+	dfgs := re.FindAllStringSubmatch(r.FormValue("group"), -1)
 
-	var dfgComma string
-	for _, dfg := range dfgs {
-		if strings.Contains(r.FormValue("group"), dfg) {
-			dfgComma += dfg + ","
+	v.Vars["group"] = ""
+	if len(dfgs) > 0 {
+
+		var dfgComma string
+		check := make(map[string]int)
+		for _, dfg := range dfgs {
+			squad := strings.Index(dfg[0], "-squad")
+			if squad != -1 {
+				if _, ok := check[dfg[0][0:squad]]; !ok {
+					check[dfg[0][0:squad]] = 1
+					dfgComma += fmt.Sprintf("%s,", dfg[0][0:squad])
+				}
+			} else {
+				if _, ok := check[dfg[0]]; !ok {
+					check[dfg[0]] = 1
+					dfgComma += fmt.Sprintf("%s,", dfg[0])
+				}
+			}
 		}
+		dfgComma = dfgComma[0 : len(dfgComma)-1]
+		v.Vars["group"] = dfgComma
 	}
 
-	v.Vars["group"] = strings.TrimSuffix(dfgComma, ",")
 	v.Vars["id"] = r.FormValue("id")
 	v.Vars["uid"] = r.FormValue("uid")
 
